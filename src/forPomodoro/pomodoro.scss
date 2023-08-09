@@ -1,0 +1,47 @@
+.timer-component-wrap{
+    // border:2px solid green;
+    width:600px;
+    margin:auto;
+
+    #count-down{
+        // border:2px solid red;
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .controls{
+        // border:2px solid blue;
+        width:100%;
+        justify-content: center;
+        margin:10px auto;
+    }
+}
+
+.options-wrap{
+    // border:2px solid red;
+    width:800px;
+    margin:auto;
+    padding:20px;
+    padding-left:50px;
+}
+
+.heatmap-wrap{
+    // border:2px solid green;
+    width:800px;
+    margin:auto;
+    margin:40px auto;
+
+    .heatmap-grid{
+        // border:2px solid blue;
+        padding:20px;
+        padding-left:50px;
+
+        
+    }
+}
+
+.settings-wrap{
+    // border:2px solid green;
+    width:600px;
+    margin:auto;
+}
