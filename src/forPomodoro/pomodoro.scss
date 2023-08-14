@@ -1,3 +1,20 @@
+.pomodoro-wrap{
+    margin:60px;
+
+    .stop-alarm-button-wrap{
+        // border: 2px solid green;
+        justify-content: center;
+        display: flex;
+
+        .stopAlarmButton{
+            // border:2px solid red;
+            width:600px;
+            margin-top:30px;
+            
+        }
+    }
+}
+
 .timer-component-wrap{
     // border:2px solid green;
     width:600px;

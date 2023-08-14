@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-// import App from './App';
-import App from './forPomodoro/Pomodoro';
+import App from './App';
+// import App from './forBinaural/Binaural';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

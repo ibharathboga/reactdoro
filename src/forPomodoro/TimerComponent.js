@@ -5,7 +5,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import '../app.scss';
 import './pomodoro.scss';
-const TimerComponent = ({limit,onReachZero,toChangeLimit}) => {
+const TimerComponent = ({limit,onReachZero,toChangeLimit,binauralRef}) => {
 
     const [sec,setSec] = useState(limit);
     const timeref = useRef(0);
@@ -17,22 +17,21 @@ const TimerComponent = ({limit,onReachZero,toChangeLimit}) => {
     const handleStart = () => {
         if(sec === 0) return;
 
-        console.log("start invoked")
+        // console.log("start invoked")
         setStarted(true);
-
+        
         timeref.current = setInterval(()=>{
             setSec(prev=>prev-1);
         },1000)
     }
     const handleStop = () => {
-        console.log("stop invoked");
+        // console.log("stop invoked");
         setStarted(false);
-
+        
         clearInterval(timeref.current);
     }
     const handleReset = () => {
-        console.log("reset invoked");
-
+        // console.log("reset invoked");
         setSec(limit);
     }
 
@@ -41,7 +40,7 @@ const TimerComponent = ({limit,onReachZero,toChangeLimit}) => {
         if(sec !== 0) return;
 
         //run only when sec gets to zero.
-        console.log("sec reached zero");
+        // console.log("sec reached zero");
         handleStop();
         setSec(limit);
         onReachZero();
@@ -49,10 +48,24 @@ const TimerComponent = ({limit,onReachZero,toChangeLimit}) => {
     
     //on change of limit
     useEffect(()=>{
-        console.log("limit change invoked");
+        // console.log("limit change invoked");
         handleStop();
         setSec(limit);
     },[limit])
+
+    //to handle binaural audio
+    useEffect(()=>{
+        if(binauralRef.current === null) return;
+
+        if (hasStarted === true){
+            binauralRef.current.handleBinauralStart();
+        }
+        else if (hasStarted === false){
+            binauralRef.current.handleBinauralStop();
+        }
+    },[hasStarted,binauralRef])
+
+    
 
     return (
     <div className = "timer-component-wrap">

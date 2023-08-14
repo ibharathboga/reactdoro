@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import {useRef} from 'react';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -9,17 +10,29 @@ import Pomodoro from './forPomodoro/Pomodoro';
 import Binaural from './forBinaural/Binaural';
 import About from './forAbout/About';
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
 import react_logo from './assets/react_logo.png';
 import './app.scss';
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: 'dark',
+//   },
+// });
 
 function App() {
 
   const [tabvalue,setTabvalue] = useState(0);
   const [hideAbout,setHideAbout] = useState(true);
 
+  const binref = useRef(null);
+
   return (
+    <ThemeProvider theme={createTheme({palette:{mode: 'dark'}})}>
+    <CssBaseline />
       <div className="App">
-            
             <header>
                 <img src = {react_logo} alt = "react_logo"/>
                 <div className = "heads">
@@ -38,7 +51,7 @@ function App() {
                 onChange={(e,v)=>setTabvalue(v)}
                 centered
                 variant = "fullWidth"
-                sx={{fontSize:"90px"}}
+                sx={{fontSize:"90px",minWidth:"600px"}}
               >
                 <Tab label={<h2>to do</h2>} sx={{padding:"20px"}}/>
                 <Tab label={<h2>pomodoro</h2>} sx={{padding:"20px"}}/>
@@ -49,13 +62,14 @@ function App() {
                 <ToDo/>
               </div>
               <div hidden={1!==tabvalue}>
-                <Pomodoro/>
+                <Pomodoro binauralInstance = {binref}/>
               </div>
               <div hidden={2!==tabvalue}>
-                <Binaural/>
+                <Binaural ref = {binref}/>
               </div>
             </main>
       </div>
+  </ThemeProvider>
   );
 }
 

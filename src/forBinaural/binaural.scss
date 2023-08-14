@@ -1,0 +1,37 @@
+.binaural-wrap{
+    // border:2px solid red;
+    min-width: 600px;
+    width:800px;
+    margin: auto;
+    margin-top:40px;
+
+    .left-freq-wrap{
+        display:flex;
+        align-items: center;
+        margin-top:30px;
+        margin-bottom:30px;
+        justify-content: space-evenly;
+        // border:2px solid green;
+    }
+    
+    .right-freq-wrap{
+        display:flex;
+        align-items: center;
+        margin-top:30px;
+        margin-bottom:30px;
+        justify-content: space-evenly;
+        // border:2px solid red;
+    }
+    
+    .on-slider{
+        width:450px;
+        margin-top:30px;
+        margin-bottom:30px;
+    }
+    
+    .bin-controls-wrap{
+        // border:2px solid red;
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
