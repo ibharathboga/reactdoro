@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 import { forwardRef } from 'react';
 import { useImperativeHandle } from 'react';
@@ -14,6 +15,16 @@ function HeatMap(props,ref) {
 
   const [durationColor, setDurationColor] = useState("");
   const [streaks, setStreaks] = useState([{dv:"00:00 mins",tv:"⚪"}]);
+
+  //to persist on refresh
+  useEffect(()=>{
+    const stored_streaks = JSON.parse(localStorage.getItem("localStreaks"));
+    setStreaks(stored_streaks);
+  },[])
+  useEffect(()=>{
+      localStorage.setItem("localStreaks",JSON.stringify(streaks));
+  },[streaks])
+
     
   const handleTrackType = (e) => {
     // console.log("handleTrackType invoked. " + e);
