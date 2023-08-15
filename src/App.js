@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import ToDo from './forToDo/ToDo';
 import Pomodoro from './forPomodoro/Pomodoro';
 import Binaural from './forBinaural/Binaural';
+
 import About from './forAbout/About';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -20,7 +21,7 @@ function App() {
 
   const [tabvalue,setTabvalue] = useState(0);
   const [hideAbout,setHideAbout] = useState(true);
-  
+
   return (
     <ThemeProvider theme={createTheme({palette:{mode: 'dark'}})}>
     <CssBaseline />

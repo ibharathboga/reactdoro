@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
@@ -8,16 +8,13 @@ import { useFrequency } from 'react-frequency';
 import MuiInput from '@mui/material/Input';
 import Switch from '@mui/material/Switch';
 
-import { forwardRef } from 'react';
-import { useImperativeHandle } from 'react';
-
 import '../app.scss';
 import './binaural.scss';
-function Binaural(props,ref) {
+function Binaural() {
 
   const [leftFreq,setLeftFreq] = useState(100);
   const [rightFreq, setRightFreq] = useState(140);
-  const [syncWithPomo,setSyncWithPomo] = useState(false);
+  // const [syncWithPomo,setSyncWithPomo] = useState(false);
   
   const leftAudio = useFrequency({
     hz:leftFreq,
@@ -50,10 +47,7 @@ function Binaural(props,ref) {
   const handleStartStopButton = () => {
     console.log("handleStartStopButton Called")
     handleBinauralToggle();
-    setSyncWithPomo(false);
   }
-
-  // useImperativeHandle(ref,()=> ({handleBinauralStart,handleBinauralStop,handleBinauralToggle}))
 
   return (
     <div className='binaural-wrap'>
@@ -112,14 +106,16 @@ function Binaural(props,ref) {
 
       <div className = "bin-controls-wrap">
         <Button variant="contained" onClick = {handleStartStopButton}>{!(leftAudio.playing && rightAudio.playing)? "start" : "stop"}</Button>
+        {/* <div className = "switch-wrap">
         <Switch
           checked={syncWithPomo}
           onChange={()=>setSyncWithPomo(prev=>!prev)}
           />
         Sync with Pomodoro
+        </div> */}
       </div>
 
     </div>
   )
 }
-export default forwardRef(Binaural)
+export default Binaural;
