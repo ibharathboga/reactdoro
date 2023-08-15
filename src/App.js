@@ -16,12 +16,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import react_logo from './assets/react_logo.png';
 import './app.scss';
 
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: 'dark',
-//   },
-// });
-
 function App() {
 
   const [tabvalue,setTabvalue] = useState(0);
@@ -60,10 +54,10 @@ function App() {
                 <ToDo/>
               </div>
               <div hidden={1!==tabvalue}>
-                <Pomodoro binauralRefPomodoro = {binauralRefApp}/>
+                <Pomodoro/>
               </div>
               <div hidden={2!==tabvalue}>
-                <Binaural ref = {binauralRefApp}/>
+                <Binaural/>
               </div>
             </main>
       </div>
