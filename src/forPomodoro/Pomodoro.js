@@ -23,7 +23,7 @@ import './pomodoro.scss';
 window.soundManager.setup({debugMode: false});
 dayjs.extend(objectSupport);
 
-function Pomodoro({binauralInstance}) {
+function Pomodoro() {
 
   const [duration,setDuration] = useState(3);
   const [showSettings,setShowSettings] = useState(false);
@@ -37,9 +37,6 @@ function Pomodoro({binauralInstance}) {
   const handleReachZero = () => {
     // console.log("reached zero - a call from parent");
     trackref.current.handleAddType(duration);
-    if(binauralInstance.current){
-      binauralInstance.current.handleBinauralToggle();
-    }
     addNotification({
       title: "ReactDoroC5",
       message: "Timer Reached Zero!",
@@ -60,7 +57,6 @@ function Pomodoro({binauralInstance}) {
         limit = {duration}
         onReachZero={handleReachZero}
         toChangeLimit={()=>setShowSettings(prev=>!prev)}
-        binauralRef = {binauralInstance}
         />
       </div>
 

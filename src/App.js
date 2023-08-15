@@ -26,9 +26,7 @@ function App() {
 
   const [tabvalue,setTabvalue] = useState(0);
   const [hideAbout,setHideAbout] = useState(true);
-
-  const binref = useRef(null);
-
+  
   return (
     <ThemeProvider theme={createTheme({palette:{mode: 'dark'}})}>
     <CssBaseline />
@@ -62,10 +60,10 @@ function App() {
                 <ToDo/>
               </div>
               <div hidden={1!==tabvalue}>
-                <Pomodoro binauralInstance = {binref}/>
+                <Pomodoro binauralRefPomodoro = {binauralRefApp}/>
               </div>
               <div hidden={2!==tabvalue}>
-                <Binaural ref = {binref}/>
+                <Binaural ref = {binauralRefApp}/>
               </div>
             </main>
       </div>

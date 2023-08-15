@@ -17,8 +17,8 @@ function Binaural(props,ref) {
 
   const [leftFreq,setLeftFreq] = useState(100);
   const [rightFreq, setRightFreq] = useState(140);
-  // eslint-disable-next-line
   const [syncWithPomo,setSyncWithPomo] = useState(false);
+  
   const leftAudio = useFrequency({
     hz:leftFreq,
     type:"left",
@@ -53,7 +53,7 @@ function Binaural(props,ref) {
     setSyncWithPomo(false);
   }
 
-  useImperativeHandle(ref,()=> (syncWithPomo ? {handleBinauralStart,handleBinauralStop,handleBinauralToggle} : null))
+  // useImperativeHandle(ref,()=> ({handleBinauralStart,handleBinauralStop,handleBinauralToggle}))
 
   return (
     <div className='binaural-wrap'>

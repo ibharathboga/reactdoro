@@ -5,7 +5,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import '../app.scss';
 import './pomodoro.scss';
-const TimerComponent = ({limit,onReachZero,toChangeLimit,binauralRef}) => {
+const TimerComponent = ({limit,onReachZero,toChangeLimit}) => {
 
     const [sec,setSec] = useState(limit);
     const timeref = useRef(0);
@@ -38,7 +38,7 @@ const TimerComponent = ({limit,onReachZero,toChangeLimit,binauralRef}) => {
     //on reaching zero
     useEffect(()=>{
         if(sec !== 0) return;
-
+        
         //run only when sec gets to zero.
         // console.log("sec reached zero");
         handleStop();
@@ -52,20 +52,6 @@ const TimerComponent = ({limit,onReachZero,toChangeLimit,binauralRef}) => {
         handleStop();
         setSec(limit);
     },[limit])
-
-    //to handle binaural audio
-    useEffect(()=>{
-        if(binauralRef.current === null) return;
-
-        if (hasStarted === true){
-            binauralRef.current.handleBinauralStart();
-        }
-        else if (hasStarted === false){
-            binauralRef.current.handleBinauralStop();
-        }
-    },[hasStarted,binauralRef])
-
-    
 
     return (
     <div className = "timer-component-wrap">
