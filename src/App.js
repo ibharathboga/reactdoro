@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState} from 'react';
-import {useRef} from 'react';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';

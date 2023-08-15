@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 // import { useEffect } from 'react';
 
@@ -12,7 +12,6 @@ import TaskItemComponent from './TaskItemComponent';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import './todo.scss';
-import useLocalStorage from '../useLocalStorage.js';
 function ToDo() {
     const sample = [
         {id:0,description: "Buy groceries"},
@@ -24,11 +23,21 @@ function ToDo() {
     const [tasks,setTasks] = useState(sample);
     const [count,setCount] = useState(3);
     const [done,setDone]  = useState([]);
+
+    //to persist on refresh
+    useEffect(()=>{
+        const stored_tasks = JSON.parse(localStorage.getItem("localTasks"));
+        setTasks(stored_tasks);
+    },[])
+    useEffect(()=>{
+        localStorage.setItem("localTasks",JSON.stringify(tasks));
+    },[tasks])
+
     
     //to add task into tasks
     const handleAdd = () => {
         if(task === "") return;
-
+        
         setCount(prev=>prev+1);
         const newTask = {id:count,description:task}
 
