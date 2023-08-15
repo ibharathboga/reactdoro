@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/reactdoro/static/css/main.1a4f80ac.css",
+    "main.css": "/reactdoro/static/css/main.bd3c53d4.css",
     "main.js": "/reactdoro/static/js/main.aa3aa677.js",
     "static/media/alarm.wav": "/reactdoro/static/media/alarm.9c91a01e4cbaaaf936b1.wav",
     "static/media/react_logo.png": "/reactdoro/static/media/react_logo.428839d4924b447d4d50.png",
     "index.html": "/reactdoro/index.html"
   },
   "entrypoints": [
-    "static/css/main.1a4f80ac.css",
+    "static/css/main.bd3c53d4.css",
     "static/js/main.aa3aa677.js"
   ]
 }
